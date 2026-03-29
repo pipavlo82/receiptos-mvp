@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ReceiptOS Decision Receipt v1",
+  "type": "object",
+  "required": ["receipt_version", "decision_id", "ts_utc", "actor", "inputs", "decision", "evidence", "hashes", "signature"],
+  "properties": {
+    "receipt_version": {"const": "v1"},
+    "decision_id": {"type": "string"},
+    "ts_utc": {"type": "string"},
+    "actor": {
+      "type": "object",
+      "required": ["agent", "policy"],
+      "properties": {
+        "agent": {"type": "string"},
+        "policy": {"type": "string"},
+        "model": {"type": "string"}
+      }
+    },
+    "inputs": {
+      "type": "object",
+      "properties": {
+        "context_hash": {"type": "string"},
+        "source_refs": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "decision": {
+      "type": "object",
+      "required": ["action", "confidence"],
+      "properties": {
+        "action": {"type": "string"},
+        "confidence": {"type": "number"},
+        "size_mult": {"type": "number"},
+        "note": {"type": "string"}
+      }
+    },
+    "tool_call": {
+      "type": "object",
+      "required": ["name", "input", "output"],
+      "properties": {
+        "name": {"type": "string"},
+        "input": {"type": "object"},
+        "output": {"type": "object"}
+      }
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["kind", "value", "weight"],
+        "properties": {
+          "kind": {"type": "string"},
+          "value": {},
+          "weight": {"type": "number"}
+        }
+      }
+    },
+    "hashes": {
+      "type": "object",
+      "required": ["decision_sha256", "receipt_sha256"],
+      "properties": {
+        "decision_sha256": {"type": "string"},
+        "receipt_sha256": {"type": "string"},
+        "prev_receipt_sha256": {"type": ["string", "null"]}
+      }
+    },
+    "signature": {
+      "type": "object",
+      "required": ["alg", "key_id", "sig_hex"],
+      "properties": {
+        "alg": {"type": "string"},
+        "key_id": {"type": "string"},
+        "sig_hex": {"type": "string"}
+      }
+    }
+  }
+}

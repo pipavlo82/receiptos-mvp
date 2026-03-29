@@ -1,0 +1,7 @@
+{
+  "actor": {"agent": "demo", "policy": "p1", "model": "n/a"},
+  "inputs": {"context_hash": "ctx-sample", "source_refs": ["demo"]},
+  "decision": {"action": "hold", "confidence": 0.66, "size_mult": 1.0, "note": "sample"},
+  "evidence": [{"kind": "rule", "value": "ok", "weight": 0.5}],
+  "nonce": "sample-nonce-1"
+}

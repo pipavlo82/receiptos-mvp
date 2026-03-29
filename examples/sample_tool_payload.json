@@ -1,0 +1,27 @@
+{
+  "actor": {
+    "agent": "codex-style-agent",
+    "policy": "receiptos_demo_policy_v1",
+    "model": "demo-model"
+  },
+  "inputs": {
+    "context_hash": "task:estimate-price:sku=ABC-1",
+    "source_refs": ["user_task", "tool_response"]
+  },
+  "tool_call": {
+    "name": "pricing_api",
+    "input": {"sku": "ABC-1", "region": "US"},
+    "output": {"price": 42.5, "currency": "USD", "confidence": 0.94}
+  },
+  "decision": {
+    "action": "quote_customer",
+    "confidence": 0.88,
+    "size_mult": 1.0,
+    "note": "Tool output supports quote generation"
+  },
+  "evidence": [
+    {"kind": "tool_output_confidence", "value": 0.94, "weight": 0.5},
+    {"kind": "policy_rule", "value": "price_confidence>=0.9", "weight": 0.3}
+  ],
+  "nonce": "sample-tool-nonce-1"
+}

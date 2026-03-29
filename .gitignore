@@ -1,0 +1,17 @@
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Local demo/runtime artifacts
+examples/*ledger*.jsonl
+examples/decision_receipts.jsonl
+examples/seen_nonces.json
+examples/sample_receipt.json
+examples/sample_receipt_tampered.json
+
+# OS/editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

@@ -27,6 +27,11 @@ For Codex/plugin-style workflows, ReceiptOS gives:
 - append-only decision history,
 - chain validation for audit/forensics.
 
+## Who should use this now
+- teams shipping tool-calling agents and needing auditable execution
+- automation/risk/compliance workflows where replay/tamper matters
+- builders needing a lightweight trust layer before full platform hardening
+
 ---
 
 ## Quick demo (one command)
@@ -48,7 +53,7 @@ bash receiptos_mvp/scripts/smoke.sh
 ## Handy commands (task runner)
 
 ```bash
-cd receiptos_mvp
+cd /mnt/d/prop_bot/receiptos_mvp
 make demo
 make smoke
 make test
